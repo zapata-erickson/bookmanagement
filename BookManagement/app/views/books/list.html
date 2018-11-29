@@ -17,10 +17,12 @@
                     <option value="name">Name</option>
                     <option value="author">Author</option>
                 </select>
+                <p>&nbsp;Selected: {{ controller.selectedBooks.length }}</p>
             </div>
             <table class="table table-bordered table-responsive table-hover  table-striped">
                 <thead class="table-header">
-                    <tr>
+                    <tr> 
+                        <th><input type="checkbox" ng-click="controller.selectAllBooks();" ng-checked="controller.areAllBooksSelected();"/></th>
                         <th style="width:30%">ID</th>
                         <th style="width:30%">Name</th>
                         <th style="width:20%">Author</th>
@@ -29,20 +31,21 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="book in controller.bookList | filter: searchBook |orderBy: controller.orderByColumn">
+                        <td><input type="checkbox" ng-click="controller.selectBook(book);" ng-checked="controller.isBookSelected(book);" /></td>
                         <td>{{book.id}}</td>
                         <td>{{book.name}}</td>
                         <td>{{book.author}}</td>
                         <td>
-                            <span>
-                                <a href="#!/books/edit/{{ controller.bookList.indexOf(book) }}" id="lnkEdit" name="lnkEdit">Edit</a> |
-                                <a href="" id="lnkDelete" name="lnkDelete" ng-click="controller.removeBook(book);">Delete</a>
+                            <span class="text-center">
+                                <a href="#!/books/edit/{{ controller.bookList.indexOf(book) }}" id="lnkEdit" name="lnkEdit">Edit</a>
                             </span>
                         </td>
                     </tr>
                 </tbody>
             </table>
             <div>
-                <a class="btn btn-toolbar btn-success" href="#!/books/add">Add New Book</a>
+                <a class="btn btn-toolbar btn-primary" href="#!/books/add">Add Book</a>
+                <a class="btn btn-toolbar btn-primary" ng-click="controller.removeSelectedBooks();">Delete Book(s)</a>
             </div>
         </div>
     </div>

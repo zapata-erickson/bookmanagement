@@ -14,12 +14,23 @@ app.service('notificationService', ['toast', function (toast) {
         });
     };
 
-    this.notifyFail = function (msg) {
+    this.notifyInfo = function (msg) {
         toast({
             duration: service.duration,
             message: msg,
             maxToast: service.maxToast,
-            className: 'alert-danger'           
+            className: 'alert-info'
+        });
+    };
+
+    this.notifyError = function (msg) {
+        toast({
+            duration: service.duration,
+            message: msg,
+            maxToast: service.maxToast,
+            className: 'alert-danger'
         });
     }
+
+
 }]);
