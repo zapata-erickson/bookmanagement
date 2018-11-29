@@ -27,3 +27,13 @@ textarea {
     color: white;
     background-color: black;
 }
+
+.table-body-hover > tbody > tr:hover{
+    background-color : lightgray;
+}
+
+
+.selected{
+    background-color: darkgray;
+}
+

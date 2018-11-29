@@ -1,6 +1,6 @@
 ﻿/// <reference path="../app.js" />
 
-app.controller('BookController', ['$scope', '$routeParams', '$location', 'notificationService', 'bookService', function BookController($scope, $routeParams, $location, notificationService, bookService) {
+app.controller('BookController', ['$scope', '$routeParams', '$location', 'NotificationService', 'BookService', function BookController($scope, $routeParams, $location, NotificationService, BookService) {
     var controller = this;
 
     this.bookModel = { id: null, name: null, author: null };
@@ -9,7 +9,18 @@ app.controller('BookController', ['$scope', '$routeParams', '$location', 'notifi
 
     this.selectedBooks = [];
 
+    this.selectStateStyle = '';
+
     this.orderByColumn = 'id';
+
+    this.isDeletedEnabled = function () {
+        if (controller.selectedBooks.length != 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
     this.selectBook = function (book) {
         var idx = controller.selectedBooks.indexOf(book);
@@ -46,6 +57,10 @@ app.controller('BookController', ['$scope', '$routeParams', '$location', 'notifi
         }
     }
 
+    this.hightlightIfSelected = function (book) {
+        return controller.selectedBooks[controller.selectedBooks.indexOf(book)] === book;
+    }
+
     this.areAllBooksSelected = function () {
         if (controller.selectedBooks.length == controller.bookList.length) {
             return true;
@@ -56,7 +71,7 @@ app.controller('BookController', ['$scope', '$routeParams', '$location', 'notifi
     }
 
     this.getBooksList = function () {
-        controller.bookList = bookService.getBookList();
+        controller.bookList = BookService.getBookList();
     };
 
     this.updateBookList = function () {
@@ -66,17 +81,17 @@ app.controller('BookController', ['$scope', '$routeParams', '$location', 'notifi
             var book = controller.bookList[idx];
             book.name = controller.bookModel.name;
             book.author = controller.bookModel.author;
-            bookService
+            BookService
             .updateBook(book, controller.bookModel);
             $location.path('/books');
-            notificationService.notifySuccess('Book successfully updated!');
+            NotificationService.notifySuccess('Book successfully updated!');
         }
         else
         {
-            bookService
+            BookService
             .addNewBook(controller.bookModel);
             $location.path('/books');
-            notificationService.notifySuccess('Book successfully added!');
+            NotificationService.notifySuccess('Book successfully added!');
         }        
     };
 
@@ -86,15 +101,15 @@ app.controller('BookController', ['$scope', '$routeParams', '$location', 'notifi
                 controller.removeBook(book);
             });
             controller.selectedBooks = [];
-            notificationService.notifySuccess('Book(s) successfully removed!');
+            NotificationService.notifySuccess('Book(s) successfully removed!');
         }
         else {
-            notificationService.notifyError('No book(s) has been selected!');
+            NotificationService.notifyError('No book(s) has been selected!');
         }
     }
 
     this.removeBook = function (book) {
-        bookService.removeBook(book);        
+        BookService.removeBook(book);        
     };
 
     this.editBook = function () {

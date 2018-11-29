@@ -1,5 +1,5 @@
 ﻿/// <reference path="../app.js" />
-app.service('notificationService', ['toast', function (toast) {
+app.service('NotificationService', ['toast', function (toast) {
     var service = this;
 
     this.maxToast = 1;

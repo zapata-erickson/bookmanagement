@@ -1,13 +1,13 @@
 ﻿/// <reference path="../app.js" />
-app.service("bookService", ['$http', function ($http) {
+app.service('BookService', ['$http', function ($http) {
     var service = this;
     
     this.bookList = [
-                { id: "1", name: "Doomsday Conspiracy", author: "Sydney Sheldon" },
-                { id: "2", name: "Undocumented DOS", author: "Ray Duncan" },
-                { id: "3", name: "PC Upgrading/Repair", author: "Unknown", },
-                { id: "4", name: "Bourne Ultimatum", author: "Robert Ludlum" },
-                { id: "5", name: "Interview with the Vampire", author: "Ann Rice" }];
+                { id: '1', name: 'Doomsday Conspiracy', author: 'Sydney Sheldon' },
+                { id: '2', name: 'Undocumented DOS', author: 'Ray Duncan' },
+                { id: '3', name: 'PC Upgrading/Repair', author: 'Unknown', },
+                { id: '4', name: 'Bourne Ultimatum', author: 'Robert Ludlum' },
+                { id: '5', name: 'Interview with the Vampire', author: 'Ann Rice' }];
 
 
     this.bookCount = this.bookList.length;

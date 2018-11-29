@@ -1,6 +1,6 @@
 ﻿<html ng-app="BookManagement">
 <head ng-controller="BookManagementController">
-    <title>{{ appInfo.name }}&nbsp;{{ appInfo.version }}</title>
+    <title>Book Management</title>
     <link href="app/assets/styles/bootstrap.css" rel="stylesheet" />
     <link href="app/assets/styles/bootstrap.min.css" rel="stylesheet" />
     <link href="app/assets/styles/angularjs-toast.css" rel="stylesheet" />
@@ -14,8 +14,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </button>
-                <a href="#!/home">{{ appInfo.name }}</a>
+                </button>               
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -28,10 +27,6 @@
     </div>
     <div class="container body-content">        
         <div ng-view/>
-        <hr />
-        <footer>
-            <p>Created by {{ appInfo.author }}</p>
-        </footer>        
     </div>
     <!--core libraries section-->
     <script type="text/javascript" src="app/assets/lib/angular.js"></script>

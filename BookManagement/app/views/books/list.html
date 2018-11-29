@@ -12,16 +12,15 @@
                 <label for="txtSearchBook">Search for:</label>
                 <input id="txtSearchBook" name="txtSearchBook" type="text" ng-model="searchBook" />
                 <label for="ddlOrderBy">Sort By:</label>
-                <select id="ddlOrderBy" name="ddlOrderBy" ng-model="controller.orderByColumn" >
+                <select id="ddlOrderBy" name="ddlOrderBy" ng-model="controller.orderByColumn">
                     <option value="id">Id</option>
                     <option value="name">Name</option>
                     <option value="author">Author</option>
-                </select>
-                <p>&nbsp;Selected: {{ controller.selectedBooks.length }}</p>
+                </select>                
             </div>
-            <table class="table table-bordered table-responsive table-hover  table-striped">
+            <table class="table table-responsive table-bordered table-body-hover">
                 <thead class="table-header">
-                    <tr> 
+                    <tr>
                         <th><input type="checkbox" ng-click="controller.selectAllBooks();" ng-checked="controller.areAllBooksSelected();"/></th>
                         <th style="width:30%">ID</th>
                         <th style="width:30%">Name</th>
@@ -29,8 +28,8 @@
                         <th style="width:10%">Actions</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr ng-repeat="book in controller.bookList | filter: searchBook |orderBy: controller.orderByColumn">
+                <tbody class="table-body-hover">
+                    <tr ng-class="{selected: controller.hightlightIfSelected(book)}" ng-repeat="book in controller.bookList | filter: searchBook |orderBy: controller.orderByColumn">
                         <td><input type="checkbox" ng-click="controller.selectBook(book);" ng-checked="controller.isBookSelected(book);" /></td>
                         <td>{{book.id}}</td>
                         <td>{{book.name}}</td>
@@ -43,9 +42,12 @@
                     </tr>
                 </tbody>
             </table>
-            <div>
+            <div style="text-align: right">
                 <a class="btn btn-toolbar btn-primary" href="#!/books/add">Add Book</a>
-                <a class="btn btn-toolbar btn-primary" ng-click="controller.removeSelectedBooks();">Delete Book(s)</a>
+                <button class="btn btn-toolbar btn-primary" ng-click="controller.removeSelectedBooks();">
+                    Delete 
+                    <span>({{ controller.selectedBooks.length }})</span>
+                </button>
             </div>
         </div>
     </div>
