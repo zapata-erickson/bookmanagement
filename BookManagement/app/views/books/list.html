@@ -1,4 +1,4 @@
-﻿<div ng-controller="BookController">
+﻿<div ng-controller="BookListController">
     <div class="panel">
         <div class="panel-heading">
             <div class="row">
@@ -36,14 +36,14 @@
                         <td>{{book.author}}</td>
                         <td>
                             <span class="text-center">
-                                <a href="#!/books/edit/{{ controller.bookList.indexOf(book) }}" id="lnkEdit" name="lnkEdit">Edit</a>
+                                <a ng-click="controller.showEditBookWindow(book);" id="lnkEdit" name="lnkEdit">Edit</a>
                             </span>
                         </td>
                     </tr>
                 </tbody>
             </table>
             <div style="text-align: right">
-                <a class="btn btn-toolbar btn-primary" href="#!/books/add">Add Book</a>
+                <a class="btn btn-toolbar btn-primary" ng-click="controller.showCreateBookWindow();">Add Book</a>
                 <button class="btn btn-toolbar btn-primary" ng-click="controller.removeSelectedBooks();">
                     Delete 
                     <span>({{ controller.selectedBooks.length }})</span>

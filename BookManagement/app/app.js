@@ -1,4 +1,4 @@
-﻿var app = angular.module('BookManagement', ['ngRoute','ngAnimate','angularjsToast']);
+﻿var app = angular.module('BookManagement', ['ngRoute', 'ngAnimate', 'angularjsToast', 'ui.bootstrap']);
 
 app.controller("BookManagementController", ['$scope', function ($scope) {
     $scope.appInfo = {
@@ -26,19 +26,7 @@ app.config(function ($routeProvider, $locationProvider) {
     .when('/books',
     {
         templateUrl: 'app/views/books/list.html',
-        controller: 'BookController',
-        controllerAs: 'controller'
-    })
-    .when('/books/add',
-    {
-        templateUrl: 'app/views/books/add.html',
-        controller: 'BookController',
-        controllerAs: 'controller'
-    })
-    .when('/books/edit/:idx',
-    {
-        templateUrl: 'app/views/books/edit.html',
-        controller: 'BookController',
+        controller: 'BookListController',
         controllerAs: 'controller'
     })
     .otherwise({ redirectTo: '/' });

@@ -61,16 +61,20 @@
   <ItemGroup>
     <Content Include="app\assets\lib\angular-ui-router.js" />
     <Content Include="app\assets\lib\angularjs-toast.js" />
+    <Content Include="app\assets\lib\ui-bootstrap-tpls-2.5.0.js" />
     <Content Include="app\assets\styles\angularjs-toast.css" />
-    <Content Include="app\controllers\book.controller.js" />
+    <Content Include="app\controllers\book\add.controller.js" />
+    <Content Include="app\controllers\book\edit.controller.js" />
+    <Content Include="app\controllers\book\list.controller.js" />
     <Content Include="app\services\book.service..js" />
-    <Content Include="app\services\notification.service.js" />
+    <Content Include="app\factories\toaster.factory.js" />
     <Content Include="app\views\about.html" />
     <Content Include="app\views\books\add.html" />
     <Content Include="app\views\books\detail.html" />
     <Content Include="app\views\books\edit.html" />
     <Content Include="app\views\books\list.html" />
     <Content Include="packages.config" />
+    <Content Include="app\factories\modalwindow.factory.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -108,7 +112,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\factories\" />
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
