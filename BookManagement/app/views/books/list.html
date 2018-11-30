@@ -30,7 +30,7 @@
                 </thead>
                 <tbody class="table-body-hover">
                     <tr ng-class="{selected: controller.hightlightIfSelected(book)}" ng-repeat="book in controller.bookList | filter: searchBook |orderBy: controller.orderByColumn">
-                        <td><input type="checkbox" ng-click="controller.selectBook(book);" ng-checked="controller.isBookSelected(book);" /></td>
+                        <td class="form-table-action"><input type="checkbox" ng-click="controller.selectBook(book);" ng-checked="controller.isBookSelected(book);" /></td>
                         <td>{{book.id}}</td>
                         <td>{{book.name}}</td>
                         <td>{{book.author}}</td>
