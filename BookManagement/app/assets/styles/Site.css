@@ -17,6 +17,10 @@
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
+a,butto {
+    cursor :  pointer;
+}
+
 input,
 select,
 textarea {
@@ -25,11 +29,30 @@ textarea {
 
 .table-header{
     color: white;
-    background-color: black;
+    background-color: black;    
+}
+
+.table-header > tr > th {
+    text-align : center;
 }
 
 .table-body-hover > tbody > tr:hover{
     background-color : lightgray;
+}
+.form-table > tbody > tr > td > input,select{
+    width : 100%;
+}
+
+.form-table-action {
+    text-align : center;
+}
+
+.form-table-action > a{
+    cursor: pointer;
+}
+
+.form-table > tbody > tr > td > input, select {
+    width: 100%;
 }
 
 
