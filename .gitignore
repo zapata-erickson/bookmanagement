@@ -3,3 +3,7 @@
 ################################################################################
 
 /.vs
+/BookManagement/bin
+/BookManagement/obj/Debug
+/BookManagement/obj/Release
+/packages
