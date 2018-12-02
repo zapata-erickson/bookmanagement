@@ -20,7 +20,8 @@ namespace BookManagement.Data.Services
         {
             using (var uow = this.bookUnitOfWorkFactory.CreateNew())
             {
-                return uow.Books.Find(book => book.IsDeleted==false);
+                var queryList =uow.Books.Find(book => book.IsDeleted==false);
+                return queryList;
             }
         }
 

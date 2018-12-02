@@ -15,7 +15,7 @@ namespace BookManagement.WebApi.Controllers
     {
         private IBookService bookService;
 
-        public void BookControler(IBookService bookService)
+        public BookController(IBookService bookService)
         {
             this.bookService = bookService;
         }

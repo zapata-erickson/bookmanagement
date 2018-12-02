@@ -5,9 +5,9 @@ using BookManagement.Data.Repositories;
 
 namespace BookManagement.Configuration.Migrations
 {
-    public sealed class BooKDbConfiguration : DbMigrationsConfiguration<BookDbContext>
+    public sealed class BookDbConfiguration : DbMigrationsConfiguration<BookDbContext>
     {
-        public BooKDbConfiguration()
+        public BookDbConfiguration()
         {
             AutomaticMigrationsEnabled = true;
         }

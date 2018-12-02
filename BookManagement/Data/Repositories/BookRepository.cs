@@ -17,7 +17,7 @@ namespace BookManagement.Data.Repositories
 
         public IEnumerable<Book> Find(Expression<Func<Book, bool>> whereExpression)
         {
-            return this.bookDbContext.Books.Where(whereExpression);
+            return this.bookDbContext.Books.Where(whereExpression).ToList();
         }
 
         public void Add(Book item)
