@@ -38,6 +38,7 @@ textarea {
 
 .table-body-hover > tbody > tr:hover{
     background-color : lightgray;
+    cursor: pointer;
 }
 .form-table > tbody > tr > td > input,select{
     width : 100%;

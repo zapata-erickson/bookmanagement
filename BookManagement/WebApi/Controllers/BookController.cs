@@ -28,7 +28,7 @@ namespace BookManagement.WebApi.Controllers
             {
                 var bookList = bookService.GetAll();
                 var result = from book in bookList
-                             select new GetBookModel { Id = book.Id, TItle = book.Title, Author = book.Author };
+                             select new GetBookModel { Id = book.Id, Title = book.Title, Author = book.Author };
                 return Ok(result);
             }
             catch (Exception ex)
@@ -53,15 +53,15 @@ namespace BookManagement.WebApi.Controllers
         }
 
         [HttpPost, Route("create")]
-        public IHttpActionResult CreateBook(NewBookModel book)
+        public IHttpActionResult CreateBook([FromBody]NewBookModel book)
         {
             try
             {
                 var newBook = new Book { Title = book.TItle, Author = book.Author };
 
-                bookService.Create(newBook);
+                var bookId = bookService.Create(newBook);
 
-                return Ok();
+                return Ok(bookId);
             }
             catch (Exception ex)
             {
@@ -74,11 +74,18 @@ namespace BookManagement.WebApi.Controllers
         {
             try
             {
-                var updateBook = new Book { Id= book.Id, Title = book.TItle, Author = book.Author };
+                var updateBook = new Book { Id= book.Id, Title = book.Title, Author = book.Author };
 
-                bookService.Create(updateBook);
+                var updatedBook = bookService.Update(updateBook);
 
-                return Ok();
+                var result = new GetBookModel
+                {
+                    Id = updatedBook.Id,
+                    Title = updatedBook.Title,
+                    Author = updatedBook.Author
+                };
+
+                return Ok(result);
             }
             catch (Exception ex)
             {
@@ -92,10 +99,10 @@ namespace BookManagement.WebApi.Controllers
         {
             try
             {
-                var deleteBook = new Book { Id = book.Id, Title = book.TItle, Author = book.Author };
+                var deleteBook = new Book { Id = book.Id, Title = book.Title, Author = book.Author };
 
                 bookService.Delete(deleteBook);
-
+                
                 return Ok();
             }
             catch (Exception ex)

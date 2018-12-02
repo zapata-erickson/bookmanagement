@@ -26,16 +26,14 @@ namespace BookManagement.Data.Repositories
 
             item.CreateOn = DateTime.Now;
 
-            this.Add(item);
+            this.bookDbContext.Books.Add(item);
         }
 
         public void Remove(Book item)
         {
             item.IsDeleted = true;
 
-            item.ModifiedOn = DateTime.Now;
-
-            this.Add(item);
+            item.ModifiedOn = DateTime.Now;            
         }
     }
 }

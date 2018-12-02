@@ -1,4 +1,4 @@
-﻿<div ng-controller="BookListController">
+﻿<div ng-controller="ListBookController">
     <div class="panel">
         <div class="panel-heading">
             <div class="row">
@@ -14,7 +14,7 @@
                 <label for="ddlOrderBy">Sort By:</label>
                 <select id="ddlOrderBy" name="ddlOrderBy" ng-model="controller.orderByColumn">
                     <option value="id">Id</option>
-                    <option value="name">Name</option>
+                    <option value="title">Name</option>
                     <option value="author">Author</option>
                 </select>                
             </div>
@@ -23,12 +23,15 @@
                     <tr>
                         <th><input type="checkbox" ng-click="controller.selectAllBooks();" ng-checked="controller.areAllBooksSelected();"/></th>
                         <th style="width:30%">ID</th>
-                        <th style="width:30%">Name</th>
+                        <th style="width:30%">Title</th>
                         <th style="width:20%">Author</th>
                         <th style="width:10%">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="table-body-hover">
+                    <tr ng-hide="controller.bookList.length!=0">
+                        <td colspan="5">{{controller.loadingMessage}}</td>
+                    </tr>
                     <tr ng-class="{selected: controller.hightlightIfSelected(book)}" ng-repeat="book in controller.bookList | filter: searchBook |orderBy: controller.orderByColumn">
                         <td class="form-table-action">
                             <span>
@@ -36,7 +39,7 @@
                             </span>                            
                         </td>
                         <td>{{book.id}}</td>
-                        <td>{{book.name}}</td>
+                        <td>{{book.title}}</td>
                         <td>{{book.author}}</td>
                         <td class="form-table-action">
                             <span class="text-center">

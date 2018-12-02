@@ -1,25 +1,25 @@
 ﻿/// <reference path="../../app.js" />
-app.controller('EditBookController', ['$uibModalInstance','ToasterFactory', 'BookService','data',
-    function ($uibModalInstance, ToasterFactory, BookService,data) {
-        var controller = this;
 
-        this.toasterService = ToasterFactory.createService();
+(function () {
 
-        this.bookModel = { id: data.id, name: data.name, author: data.author };
+    app.controller('EditBookController', ['$uibModalInstance', 'parentController', 'data',
+        function ($uibModalInstance, parentController, data) {
 
-        this.saveBook = function () {          
-            
-            BookService
-                .updateBook(data, controller.bookModel);            
+            var controller = this;
 
-            var toast = controller.toasterService.createSuccessToast('Book successfully updated!');
+            this.bookModel = { id: data.id, title: data.title, author: data.author };
 
-            toast.show();           
+            this.saveBook = function () {
 
-            $uibModalInstance.close(controller.bookModel);
-        };
+                parentController.saveUpdatedBook(controller.bookModel);
 
-        this.close = function () {
-            $uibModalInstance.dismiss('cancel');
-        };
-    }]);;
+                $uibModalInstance.close(controller.bookModel);
+            };
+
+            this.close = function () {
+
+                $uibModalInstance.dismiss('cancel');
+            };
+        }
+    ]);
+})();

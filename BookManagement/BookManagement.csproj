@@ -125,7 +125,7 @@
     <Content Include="app\controllers\book\add.controller.js" />
     <Content Include="app\controllers\book\edit.controller.js" />
     <Content Include="app\controllers\book\list.controller.js" />
-    <Content Include="app\services\book.service..js" />
+    <Content Include="app\factories\book.service.factory.js" />
     <Content Include="app\factories\toaster.factory.js" />
     <Content Include="app\views\about.html" />
     <Content Include="app\views\books\add.html" />
@@ -203,6 +203,8 @@
     <Compile Include="WebApi\Models\NewBookModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="app\providers\" />
+    <Folder Include="app\services\" />
     <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <PropertyGroup>

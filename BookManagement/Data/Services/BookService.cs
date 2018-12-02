@@ -64,7 +64,7 @@ namespace BookManagement.Data.Services
                     if(verifyBook!=default(Book))
                     {
                         throw new Exception("Delete failed!");
-                    }
+                    }                    
                 }
                 else
                 {
@@ -73,7 +73,7 @@ namespace BookManagement.Data.Services
             }
         }
 
-        public void Create(Book model)
+        public Guid Create(Book model)
         {
             using (var uow = this.bookUnitOfWorkFactory.CreateNew())
             {
@@ -99,6 +99,10 @@ namespace BookManagement.Data.Services
                     {
                         throw new Exception("Book Creation failed");
                     }
+                    else
+                    {
+                        return verifyBook.Id;
+                    }
                 }
                 else
                 {
@@ -108,7 +112,7 @@ namespace BookManagement.Data.Services
             }
         }
 
-        public void Update(Book model)
+        public Book Update(Book model)
         {
             using (var uow = this.bookUnitOfWorkFactory.CreateNew())
             {
@@ -131,6 +135,10 @@ namespace BookManagement.Data.Services
                     if (verifyBook == default(Book))
                     {
                         throw new Exception("Book update failed");
+                    }
+                    else
+                    {
+                        return verifyBook;
                     }
 
                 }

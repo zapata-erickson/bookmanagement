@@ -12,7 +12,7 @@ namespace BookManagement.Framework
         TModel GetById(Tkey id);
         IEnumerable<TModel> GetAll();
         void Delete(TModel model);
-        void Update(TModel model);
-        void Create(TModel model);
+        TModel Update(TModel model);
+        Guid Create(TModel model);
     }
 }

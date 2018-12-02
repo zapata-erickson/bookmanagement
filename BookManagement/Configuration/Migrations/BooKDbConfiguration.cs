@@ -14,6 +14,11 @@ namespace BookManagement.Configuration.Migrations
 
         protected override void Seed(BookDbContext context)
         {
+            foreach(var book in context.Books)
+            {
+                context.Books.Remove(book);
+            }
+            
             context.Books.AddOrUpdate(
                     new Book{ Id = Guid.NewGuid(), Title = "Doomsday Conspiracy", Author = "Sydney Sheldon" , IsDeleted=false, CreateOn = DateTime.Now },
                     new Book{ Id = Guid.NewGuid(), Title = "Undocumented DOS", Author = "Ray Duncan", IsDeleted = false, CreateOn = DateTime.Now },

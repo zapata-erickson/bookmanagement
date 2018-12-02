@@ -8,7 +8,7 @@ namespace BookManagement.WebApi.Models
     public class GetBookModel
     {
         public Guid Id { get; set; }
-        public string TItle { get; set; }
+        public string Title { get; set; }
         public string Author { get; set; }
     }
 }
