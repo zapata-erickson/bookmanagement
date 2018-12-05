@@ -51,7 +51,7 @@
             </table>
             <div style="text-align: right">
                 <a class="btn btn-toolbar btn-primary" ng-click="controller.showCreateBookWindow();">Add Book</a>
-                <button class="btn btn-toolbar btn-primary" ng-click="controller.removeSelectedBooks();">
+                <button class="btn btn-toolbar btn-primary" ng-disabled="controller.bookList.length==0" ng-click="controller.removeSelectedBooks();">
                     Delete 
                     <span>({{ controller.selectedBooks.length }})</span>
                 </button>
